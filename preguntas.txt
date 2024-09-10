@@ -1,0 +1,17 @@
+[
+    {
+        "question": "¿Cuál es la capital de Francia?",
+        "options": ["Madrid", "París", "Berlín"],
+        "correct": 1
+    },
+    {
+        "question": "¿Quién pintó la Mona Lisa?",
+        "options": ["Van Gogh", "Leonardo da Vinci", "Picasso"],
+        "correct": 1
+    },
+    {
+        "question": "¿En qué año llegó el hombre a la Luna?",
+        "options": ["1969", "1959", "1979"],
+        "correct": 0
+    }
+]

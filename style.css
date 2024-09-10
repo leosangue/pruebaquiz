@@ -1,0 +1,94 @@
+body {
+  font-family: 'Comic Sans MS', sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  width: 1200px; /* Ancho fijo */
+  height: 600px; /* Altura fija */
+  max-width: 90vw; /* Asegura que la caja no sobrepase el 90% del ancho de la ventana */
+  max-height: 90vh; /* Asegura que la caja no sobrepase el 90% de la altura de la ventana */
+  text-align: center;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#question {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los botones se envuelvan en lugar de desbordarse */
+  width: 100%;
+  justify-content: center; /* Centra los botones horizontalmente */
+  gap: 10px; /* Espacio entre los botones */
+  margin-bottom: 40px;
+}
+
+.option {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 18px;
+  flex: 1 1 150px; /* Permite que los botones se ajusten y se alineen verticalmente */
+}
+
+.option.correct {
+  background-color: #28a745; /* Verde para respuestas correctas */
+}
+
+.option.incorrect {
+  background-color: #dc3545; /* Rojo para respuestas incorrectas */
+}
+
+.option:hover {
+  background-color: #0056b3;
+}
+
+#timer {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Estilo para mantener el puntaje alineado */
+#score {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 600px) {
+  .container {
+      width: 90%; /* Ancho del 90% de la pantalla */
+      height: auto; /* Permitir altura automática */
+  }
+
+  .option {
+      flex: 1 1 100%; /* Botones ocupan todo el ancho disponible en pantallas pequeñas */
+      margin: 5px 0; /* Margen vertical entre botones */
+  }
+}
