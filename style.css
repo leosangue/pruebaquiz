@@ -92,3 +92,13 @@ h1 {
       margin: 5px 0; /* Margen vertical entre botones */
   }
 }
+.question-counter {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+  padding: 10px;
+  border-radius: 5px;
+}
