@@ -72,6 +72,11 @@ h1 {
 .option:hover {
   background-color: #0056b3;
 }
+.option:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
 
 #timer {
   font-size: 24px;

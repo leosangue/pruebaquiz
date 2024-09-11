@@ -81,9 +81,9 @@ function loadQuestion() {
 // Función para verificar la respuesta seleccionada
 function checkAnswer(button, isCorrect) {
     if (button) {
-        // Desactivar todos los botones
-        const buttons = Array.from(button.parentNode.children);
-        buttons.forEach(btn => btn.disabled = true);
+        // Deshabilitar todos los botones para evitar múltiples clics
+        const optionsButtons = document.querySelectorAll('.option');
+        optionsButtons.forEach(btn => btn.disabled = true);
 
         // Implementa la lógica para verificar si la respuesta es correcta
         if (isCorrect) {
@@ -92,7 +92,7 @@ function checkAnswer(button, isCorrect) {
             correctAnswers++;
         } else {
             button.classList.add('incorrect');
-            const correctOption = buttons.find(btn => btn.textContent === questions[questionIndex].options[questions[questionIndex].correct]);
+            const correctOption = Array.from(button.parentNode.children).find(btn => btn.textContent === questions[questionIndex].options[questions[questionIndex].correct]);
             if (correctOption) {
                 correctOption.classList.add('correct');
             }
@@ -121,6 +121,7 @@ function checkAnswer(button, isCorrect) {
 }
 
 
+
 // Función para iniciar el temporizador
 function startTimer() {
     timer = 30;
@@ -133,8 +134,7 @@ function startTimer() {
             timer--;
             timerElement.textContent = `Tiempo restante: ${timer}`;
         } else {
-            // Avanzar a la siguiente pregunta si el tiempo se acaba
-            checkAnswer(null, false);
+            checkAnswer(null, false); // Marca la respuesta como incorrecta cuando el tiempo se agota
         }
     }, 1000);
 }
