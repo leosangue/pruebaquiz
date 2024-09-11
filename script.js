@@ -1,5 +1,21 @@
-function loadQuestion(data) {
-    questions = data; // Asignar datos cargados a la variable questions
+let questions = [];
+let questionIndex = 0;
+let timer;
+let score = 0;
+let correctAnswers = 0;
+let incorrectAnswers = [];
+
+function fetchQuestions() {
+    fetch('preguntas.json')
+        .then(response => response.json())
+        .then(data => {
+            questions = data;
+            loadQuestion();
+        })
+        .catch(error => console.error('Error al cargar las preguntas:', error));
+}
+
+function loadQuestion() {
     if (questionIndex < questions.length) {
         // Actualizar el número de pregunta en la esquina superior derecha
         const questionCounter = document.getElementById('question-counter');
@@ -21,7 +37,7 @@ function loadQuestion(data) {
                 const button = document.createElement('button');
                 button.classList.add('option');
                 button.textContent = option;
-                button.onclick = () => checkAnswer(button, index === currentQuestion.correct, currentQuestion);
+                button.onclick = () => checkAnswer(button, index === currentQuestion.correct);
                 optionsDiv.appendChild(button);
             });
 
@@ -63,3 +79,44 @@ function loadQuestion(data) {
         }
     }
 }
+
+function checkAnswer(button, isCorrect) {
+    // Implementa la lógica para verificar si la respuesta es correcta
+    // Actualiza el puntaje y el número de respuestas correctas o incorrectas
+    // Cambia el estilo del botón según la respuesta
+    if (isCorrect) {
+        button.classList.add('correct');
+        score++;
+        correctAnswers++;
+    } else {
+        button.classList.add('incorrect');
+        incorrectAnswers.push({
+            question: document.getElementById('question-title').textContent,
+            selected: button.textContent,
+            correct: questions[questionIndex].options[questions[questionIndex].correct]
+        });
+    }
+    questionIndex++;
+    setTimeout(() => {
+        loadQuestion();
+    }, 1000); // Cambia de pregunta después de 1 segundo
+}
+
+function startTimer() {
+    timer = 30;
+    const timerElement = document.getElementById('timer');
+    if (timerElement) {
+        timerElement.textContent = `Tiempo restante: ${timer}`;
+    }
+    setInterval(() => {
+        if (timer > 0) {
+            timer--;
+            timerElement.textContent = `Tiempo restante: ${timer}`;
+        } else {
+            checkAnswer(null, false); // Marca la respuesta como incorrecta cuando el tiempo se agota
+        }
+    }, 1000);
+}
+
+// Inicializar la carga de preguntas cuando la página cargue
+window.onload = fetchQuestions;
