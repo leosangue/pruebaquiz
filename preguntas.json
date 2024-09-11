@@ -1,0 +1,102 @@
+[
+    {
+        "question": "Qu'est-ce qu'une chambre?",
+        "options": ["Une pièce où l'on mange", "Une pièce où l'on dort", "Une pièce où l'on travaille"],
+        "correct": 1
+    },
+    {
+        "question": "Quelle est la différence entre un appartement et une maison?",
+        "options": ["Un appartement est un logement dans un immeuble, une maison est un logement indépendant", "Un appartement est plus petit qu'une maison", "Une maison est plus moderne qu'un appartement"],
+        "correct": 0
+    },
+    {
+        "question": "Décris les principales pièces d'une maison typique.",
+        "options": ["Une maison typique a un salon, une cuisine, et des toilettes", "Une maison typique a un bureau, une salle de jeux et une salle de sport", "Une maison typique a un théâtre et un studio de danse"],
+        "correct": 0
+    },
+    {
+        "question": "Quels types de logements peut-on trouver en ville?",
+        "options": ["On trouve des cabanes et des manoirs", "On trouve des appartements, des studios et des maisons", "On trouve des châteaux et des fermes"],
+        "correct": 1
+    },
+    {
+        "question": "Qu'est-ce qu'un studio?",
+        "options": ["Un grand appartement avec plusieurs chambres", "Un petit logement avec une seule pièce principale", "Un logement dans une grande maison"],
+        "correct": 1
+    },
+    {
+        "question": "Comment décrirais-tu l'aménagement intérieur d'un logement moderne?",
+        "options": ["C'est souvent ouvert, lumineux, avec peu de cloisons", "C'est sombre, avec de nombreuses pièces séparées", "C'est rempli de meubles anciens et de tapisseries"],
+        "correct": 0
+    },
+    {
+        "question": "Que signifie le terme 'meublé'?",
+        "options": ["Un logement fourni avec des meubles", "Un logement sans meubles", "Un logement avec des meubles à acheter séparément"],
+        "correct": 0
+    },
+    {
+        "question": "Quels sont les avantages de vivre dans une colocation?",
+        "options": ["On peut vivre seul", "On partage les coûts et les tâches", "On a plus d'intimité"],
+        "correct": 1
+    },
+    {
+        "question": "Quelles sont les principales dépenses liées à un logement?",
+        "options": ["Les dépenses sont principalement le loyer, l'eau et l'électricité", "Les dépenses sont les frais de stationnement et de jardinage", "Les dépenses principales sont les sorties au restaurant"],
+        "correct": 0
+    },
+    {
+        "question": "Comment choisir un bon quartier pour habiter?",
+        "options": ["Il faut choisir un quartier bien situé, sûr et proche des services", "Il faut choisir un quartier très éloigné de la ville", "Il faut choisir un quartier avec peu de voisins"],
+        "correct": 0
+    },
+    {
+        "question": "Qu'est-ce qu'un 'loyer'?",
+        "options": ["Une taxe gouvernementale", "Le montant que l'on paie chaque mois pour un logement", "Un type de contrat"],
+        "correct": 1
+    },
+    {
+        "question": "Que signifie 'salle de bains'?",
+        "options": ["Une pièce pour dormir", "Une pièce pour prendre une douche ou un bain", "Un salon"],
+        "correct": 1
+    },
+    {
+        "question": "Quel est le rôle d'un 'concierge'?",
+        "options": ["Gérer les réparations dans un immeuble", "Louer les appartements", "Accueillir les visiteurs"],
+        "correct": 0
+    },
+    {
+        "question": "Que fait-on dans une 'cuisine'?",
+        "options": ["On se lave", "On prépare des repas", "On dort"],
+        "correct": 1
+    },
+    {
+        "question": "Qu'est-ce qu'un 'balcon'?",
+        "options": ["Une pièce intérieure", "Un espace extérieur attaché à un appartement", "Un garage"],
+        "correct": 1
+    },
+    {
+        "question": "Que veut dire 'emménager'?",
+        "options": ["Quitter un logement", "Entrer dans un nouveau logement", "Peindre les murs"],
+        "correct": 1
+    },
+    {
+        "question": "Qu'est-ce qu'un 'bail'?",
+        "options": ["Un contrat de location", "Une pièce de la maison", "Un meuble"],
+        "correct": 0
+    },
+    {
+        "question": "Que signifie 'loyer charges comprises'?",
+        "options": ["Le loyer inclut l'électricité et l'eau", "Le loyer est sans frais supplémentaires", "Le loyer est payé d'avance"],
+        "correct": 0
+    },
+    {
+        "question": "Que veut dire 'rez-de-chaussée'?",
+        "options": ["Le dernier étage d'un immeuble", "L'étage au niveau de la rue", "Un sous-sol"],
+        "correct": 1
+    },
+    {
+        "question": "Qu'est-ce qu'un 'immeuble'?",
+        "options": ["Une maison individuelle", "Un bâtiment avec plusieurs appartements", "Un type de meuble"],
+        "correct": 1
+    }
+]
