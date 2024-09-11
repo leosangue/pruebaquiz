@@ -80,41 +80,37 @@ function loadQuestion() {
 
 // Función para verificar la respuesta seleccionada
 function checkAnswer(button, isCorrect) {
-    if (button) {
-        // Implementa la lógica para verificar si la respuesta es correcta
-        if (isCorrect) {
-            button.classList.add('correct');
-            score++;
-            correctAnswers++;
-        } else {
-            button.classList.add('incorrect');
-            const correctOption = Array.from(button.parentNode.children).find(btn => btn.textContent === questions[questionIndex].options[questions[questionIndex].correct]);
-            if (correctOption) {
-                correctOption.classList.add('correct');
-            }
-            incorrectAnswers.push({
-                question: document.getElementById('question-title').textContent,
-                selected: button.textContent,
-                correct: questions[questionIndex].options[questions[questionIndex].correct]
-            });
+    // Deshabilitar todos los botones
+    const options = document.querySelectorAll('.option');
+    options.forEach(option => option.disabled = true);
+
+    // Implementar la lógica para verificar si la respuesta es correcta
+    if (isCorrect) {
+        button.classList.add('correct');
+        score++;
+        correctAnswers++;
+    } else {
+        button.classList.add('incorrect');
+        incorrectAnswers.push({
+            question: document.getElementById('question-title').textContent,
+            selected: button.textContent,
+            correct: questions[questionIndex].options[questions[questionIndex].correct]
+        });
+
+        // Mostrar la respuesta correcta en verde
+        const correctButton = Array.from(options).find(option => option.textContent === questions[questionIndex].options[questions[questionIndex].correct]);
+        if (correctButton) {
+            correctButton.classList.add('correct');
         }
-
-        // Actualizar el puntaje en el HTML
-        const scoreElement = document.getElementById('score');
-        if (scoreElement) {
-            scoreElement.textContent = `Puntaje: ${score}`;
-        }
-
-        // Detener el temporizador
-        stopTimer();
-
-        // Avanzar a la siguiente pregunta
-        questionIndex++;
-        setTimeout(() => {
-            loadQuestion();
-        }, 1000); // Cambia de pregunta después de 1 segundo
     }
+
+    // Avanzar a la siguiente pregunta después de un breve retraso
+    questionIndex++;
+    setTimeout(() => {
+        loadQuestion();
+    }, 1000); // Cambia de pregunta después de 1 segundo
 }
+
 
 // Función para iniciar el temporizador
 function startTimer() {
