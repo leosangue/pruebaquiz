@@ -43,7 +43,13 @@ function loadQuestion() {
             });
 
             // Reiniciar el temporizador
-            resetTimer();
+            if (timerInterval) clearInterval(timerInterval); // Detener el temporizador anterior si existe
+            timer = 30;
+            const timerElement = document.getElementById('timer');
+            if (timerElement) {
+                timerElement.textContent = `Tiempo restante: ${timer}`;
+            }
+            startTimer();
         }
     } else {
         // Si no hay más preguntas
@@ -77,10 +83,10 @@ function loadQuestion() {
 }
 
 function checkAnswer(button, isCorrect) {
-    // Implementa la lógica para verificar si la respuesta es correcta
-    // Actualiza el puntaje y el número de respuestas correctas o incorrectas
-    // Cambia el estilo del botón según la respuesta
     if (button) {
+        // Implementa la lógica para verificar si la respuesta es correcta
+        // Actualiza el puntaje y el número de respuestas correctas o incorrectas
+        // Cambia el estilo del botón según la respuesta
         if (isCorrect) {
             button.classList.add('correct');
             score++;
@@ -93,13 +99,12 @@ function checkAnswer(button, isCorrect) {
                 correct: questions[questionIndex].options[questions[questionIndex].correct]
             });
         }
-    }
-
-    // Esperar un segundo antes de cargar la siguiente pregunta
-    setTimeout(() => {
         questionIndex++;
-        loadQuestion();
-    }, 1000); // Cambia de pregunta después de 1 segundo
+        if (timerInterval) clearInterval(timerInterval); // Detener el temporizador cuando se selecciona una respuesta
+        setTimeout(() => {
+            loadQuestion();
+        }, 1000); // Cambia de pregunta después de 1 segundo
+    }
 }
 
 function startTimer() {
@@ -113,16 +118,10 @@ function startTimer() {
             timer--;
             timerElement.textContent = `Tiempo restante: ${timer}`;
         } else {
-            clearInterval(timerInterval); // Detener el temporizador
-            // Llamar a checkAnswer con null para indicar que el tiempo se acabó
-            checkAnswer(null, false);
+            clearInterval(timerInterval); // Detener el temporizador cuando el tiempo se agota
+            checkAnswer(null, false); // Marca la respuesta como incorrecta cuando el tiempo se agota
         }
     }, 1000);
-}
-
-function resetTimer() {
-    clearInterval(timerInterval); // Limpiar el temporizador actual
-    startTimer(); // Iniciar un nuevo temporizador
 }
 
 // Inicializar la carga de preguntas cuando la página cargue
