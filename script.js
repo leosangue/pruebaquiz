@@ -1,10 +1,12 @@
 let questions = [];
 let questionIndex = 0;
 let timer;
+let timerInterval;
 let score = 0;
 let correctAnswers = 0;
 let incorrectAnswers = [];
 
+// Función para cargar preguntas desde JSON
 function fetchQuestions() {
     fetch('preguntas.json')
         .then(response => response.json())
@@ -15,6 +17,7 @@ function fetchQuestions() {
         .catch(error => console.error('Error al cargar las preguntas:', error));
 }
 
+// Función para cargar una nueva pregunta
 function loadQuestion() {
     if (questionIndex < questions.length) {
         // Actualizar el número de pregunta en la esquina superior derecha
@@ -75,6 +78,7 @@ function loadQuestion() {
     }
 }
 
+// Función para verificar la respuesta seleccionada
 function checkAnswer(button, isCorrect) {
     if (button) {
         // Implementa la lógica para verificar si la respuesta es correcta
@@ -95,6 +99,12 @@ function checkAnswer(button, isCorrect) {
             });
         }
 
+        // Actualizar el puntaje en el HTML
+        const scoreElement = document.getElementById('score');
+        if (scoreElement) {
+            scoreElement.textContent = `Puntaje: ${score}`;
+        }
+
         // Detener el temporizador
         stopTimer();
 
@@ -106,6 +116,7 @@ function checkAnswer(button, isCorrect) {
     }
 }
 
+// Función para iniciar el temporizador
 function startTimer() {
     timer = 30;
     const timerElement = document.getElementById('timer');
@@ -123,10 +134,12 @@ function startTimer() {
     }, 1000);
 }
 
+// Función para detener el temporizador
 function stopTimer() {
     clearInterval(timerInterval);
 }
 
+// Función para reiniciar el temporizador
 function resetTimer() {
     timer = 30;
     const timerElement = document.getElementById('timer');
