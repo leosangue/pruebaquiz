@@ -83,7 +83,13 @@ function checkAnswer(button, isCorrect) {
     if (button) {
         // Deshabilitar todos los botones para evitar múltiples clics
         const optionsButtons = document.querySelectorAll('.option');
-        optionsButtons.forEach(btn => btn.disabled = true);
+        optionsButtons.forEach(btn => {
+            btn.disabled = true;
+            if (btn.classList.contains('correct') || btn.classList.contains('incorrect')) {
+                // Si ya tiene clase de respuesta, mantener su color
+                btn.classList.add('disabled');
+            }
+        });
 
         // Implementa la lógica para verificar si la respuesta es correcta
         if (isCorrect) {
@@ -119,6 +125,7 @@ function checkAnswer(button, isCorrect) {
         }, 1000); // Cambia de pregunta después de 1 segundo
     }
 }
+
 
 
 

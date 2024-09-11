@@ -72,10 +72,19 @@ h1 {
 .option:hover {
   background-color: #0056b3;
 }
+
+.option:disabled.correct {
+  background-color: #28a745; /* Mantener verde si es correcto y deshabilitado */
+}
+
+.option:disabled.incorrect {
+  background-color: #dc3545; /* Mantener rojo si es incorrecto y deshabilitado */
+}
+
 .option:disabled {
-  background-color: #e0e0e0;
   cursor: not-allowed;
 }
+
 
 
 #timer {
