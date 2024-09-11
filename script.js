@@ -40,6 +40,7 @@ function loadQuestion(data) {
         const timerElement = document.getElementById('timer');
         const incorrectDiv = document.getElementById('incorrect-questions');
         const resultDiv = document.getElementById('results');
+        const questionCounter = document.getElementById('question-counter'); // Agregar referencia al contador
 
         if (questionTitle && optionsDiv && timerElement && incorrectDiv && resultDiv) {
             questionTitle.textContent = "¡Has terminado el cuestionario!";
