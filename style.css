@@ -35,6 +35,10 @@ h1 {
   font-size: 24px;
   margin-bottom: 20px;
 }
+#question-title {
+  font-size: 24px; /* Ajusta el tamaño del texto según tus necesidades */
+  margin-bottom: 20px;
+}
 
 .options {
   display: flex;
