@@ -1,6 +1,7 @@
 let questions = [];
 let questionIndex = 0;
 let timer;
+let timerInterval;
 let score = 0;
 let correctAnswers = 0;
 let incorrectAnswers = [];
@@ -42,12 +43,7 @@ function loadQuestion() {
             });
 
             // Reiniciar el temporizador
-            timer = 30;
-            const timerElement = document.getElementById('timer');
-            if (timerElement) {
-                timerElement.textContent = `Tiempo restante: ${timer}`;
-            }
-            startTimer();
+            resetTimer();
         }
     } else {
         // Si no hay más preguntas
@@ -84,20 +80,24 @@ function checkAnswer(button, isCorrect) {
     // Implementa la lógica para verificar si la respuesta es correcta
     // Actualiza el puntaje y el número de respuestas correctas o incorrectas
     // Cambia el estilo del botón según la respuesta
-    if (isCorrect) {
-        button.classList.add('correct');
-        score++;
-        correctAnswers++;
-    } else {
-        button.classList.add('incorrect');
-        incorrectAnswers.push({
-            question: document.getElementById('question-title').textContent,
-            selected: button.textContent,
-            correct: questions[questionIndex].options[questions[questionIndex].correct]
-        });
+    if (button) {
+        if (isCorrect) {
+            button.classList.add('correct');
+            score++;
+            correctAnswers++;
+        } else {
+            button.classList.add('incorrect');
+            incorrectAnswers.push({
+                question: document.getElementById('question-title').textContent,
+                selected: button.textContent,
+                correct: questions[questionIndex].options[questions[questionIndex].correct]
+            });
+        }
     }
-    questionIndex++;
+
+    // Esperar un segundo antes de cargar la siguiente pregunta
     setTimeout(() => {
+        questionIndex++;
         loadQuestion();
     }, 1000); // Cambia de pregunta después de 1 segundo
 }
@@ -108,14 +108,21 @@ function startTimer() {
     if (timerElement) {
         timerElement.textContent = `Tiempo restante: ${timer}`;
     }
-    setInterval(() => {
+    timerInterval = setInterval(() => {
         if (timer > 0) {
             timer--;
             timerElement.textContent = `Tiempo restante: ${timer}`;
         } else {
-            checkAnswer(null, false); // Marca la respuesta como incorrecta cuando el tiempo se agota
+            clearInterval(timerInterval); // Detener el temporizador
+            // Llamar a checkAnswer con null para indicar que el tiempo se acabó
+            checkAnswer(null, false);
         }
     }, 1000);
+}
+
+function resetTimer() {
+    clearInterval(timerInterval); // Limpiar el temporizador actual
+    startTimer(); // Iniciar un nuevo temporizador
 }
 
 // Inicializar la carga de preguntas cuando la página cargue
