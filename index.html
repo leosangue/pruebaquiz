@@ -24,10 +24,22 @@
     </div>
 
     <script src="script.js"></script>
-    <audio autoplay loop>
-        <source src="music.ogg" type="audio/ogg">
+    <button id="playMusicButton">Iniciar música</button>
+
+    <audio id="backgroundMusic" loop>
+        <source src="music.mp3" type="audio/mp3">
         Tu navegador no soporta la reproducción de audio.
     </audio>
+
+    <script>
+        const playButton = document.getElementById('playMusicButton');
+        const audio = document.getElementById('backgroundMusic');
+
+        playButton.addEventListener('click', () => {
+            audio.play();  // Inicia la reproducción de la música
+            playButton.style.display = 'none';  // Oculta el botón una vez que se ha hecho clic
+        });
+    </script>
     
 </body>
 </html>
